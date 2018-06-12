@@ -1,0 +1,25 @@
+- name: 创建 zookeeper 相关目录
+  become: true
+  file:
+    path: "{{item}}"
+    state: directory
+  with_items:
+  - "{{data_dir}}"
+
+- name: 复制 zookeeper 相关文件
+  become: true
+  unarchive:
+    src: "{{res_dir}}/{{zk_tar}}"
+    dest: "{{zk_installation_path}}"
+
+- name: 复制 zoo.cfg
+  become: true
+  template:
+    src: zoo.cfg.j2
+    dest: "{{zk_home}}/conf/zoo.cfg"
+
+- name: 复制 myid
+  become: true
+  template:
+    src: myid.j2
+    dest: "{{data_dir}}/myid"

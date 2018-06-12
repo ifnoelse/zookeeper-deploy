@@ -1,0 +1,23 @@
+- name: "安装 zookeeper"
+  gather_facts: no
+  hosts: zk
+  roles:
+  - { role: zk }
+  tags:
+  - zk
+
+- name: "启动 zookeeper"
+  gather_facts: no
+  hosts: zk
+  roles:
+  - { role: zk_manager, action: start}
+  tags:
+  - start_zookeeper
+
+- name: "检测 zookeeper 状态"
+  gather_facts: no
+  hosts: zk
+  roles:
+  - { role: zk_manager, action: status}
+  tags:
+  - status_zookeeper

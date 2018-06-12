@@ -1,0 +1,7 @@
+all:
+  children:
+    zk:
+      hosts:
+        node-1:
+        node-2:
+        node-3:

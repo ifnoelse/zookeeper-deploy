@@ -1,0 +1,7 @@
+data_dir: /var/lib/zookeeper
+res_dir: /vagrant/res #安装文件所在目录，也就是res文件夹所在目录
+zk_installation_path: /home/ifnoelse
+zk_home: "{{zk_installation_path}}/zookeeper-{{zk_version}}"
+
+zk_version: 3.4.12
+zk_tar: zookeeper-{{zk_version}}.tar.gz
