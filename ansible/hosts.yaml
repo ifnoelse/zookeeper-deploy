@@ -2,6 +2,6 @@ all:
   children:
     zk:
       hosts:
-        node-1:
-        node-2:
-        node-3:
+        zk-1:
+        zk-2:
+        zk-3:

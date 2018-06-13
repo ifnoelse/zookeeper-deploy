@@ -1,9 +1,9 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-vms = { "192.168.100.101" => "node-1",
-        "192.168.100.102" => "node-2",
-        "192.168.100.103" => "node-3" }
+vms = { "192.168.100.201" => "zk-1",
+        "192.168.100.202" => "zk-2",
+        "192.168.100.203" => "zk-3" }
 
 Vagrant.configure("2") do |config|
 
@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
 
       node.vm.provider "virtualbox" do |v|
         # v.name = vm_name
-        v.memory = 2048
+        v.memory = 1024
         v.cpus = 1
       end
 
@@ -41,7 +41,7 @@ Vagrant.configure("2") do |config|
 
         sed -i '1d' /etc/hosts
 
-        if [ "node-1" == "#{vm_name}" ];then wget https://bootstrap.pypa.io/get-pip.py -O -|python && pip install ansible==2.4.4;fi
+        if [ "zk-1" == "#{vm_name}" ];then wget https://bootstrap.pypa.io/get-pip.py -O -|python && pip install ansible==2.4.4;fi
       SHELL
       # node.ssh.private_key_path = ".setting/private_key"
       # node.ssh.username = "ifnoelse"

@@ -4,7 +4,7 @@
     path: "{{item}}"
     state: directory
   with_items:
-  - "{{data_dir}}"
+  - "{{zk_data_dir}}"
 
 - name: 复制 zookeeper 相关文件
   become: true
@@ -22,4 +22,4 @@
   become: true
   template:
     src: myid.j2
-    dest: "{{data_dir}}/myid"
+    dest: "{{zk_data_dir}}/myid"
