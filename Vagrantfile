@@ -1,9 +1,11 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-vms = { "192.168.100.201" => "zk-1",
-        "192.168.100.202" => "zk-2",
-        "192.168.100.203" => "zk-3" }
+name = "zk"
+
+vms = { "192.168.100.201" => "#{name}-1",
+        "192.168.100.202" => "#{name}-2",
+        "192.168.100.203" => "#{name}-3" }
 
 Vagrant.configure("2") do |config|
 
@@ -41,7 +43,9 @@ Vagrant.configure("2") do |config|
 
         sed -i '1d' /etc/hosts
 
-        if [ "zk-1" == "#{vm_name}" ];then wget https://bootstrap.pypa.io/get-pip.py -O -|python && pip install ansible==2.4.4;fi
+        if [ "#{name}-1" == "#{vm_name}" ];then wget https://bootstrap.pypa.io/get-pip.py -O -|python && pip install ansible==2.4.4;fi
+
+        yum install -y java
       SHELL
       # node.ssh.private_key_path = ".setting/private_key"
       # node.ssh.username = "ifnoelse"
