@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
     config.vm.define vm_name do |node|
 
       node.vm.box_check_update = false
-      node.vm.box = "bento/centos-7.5"
+      node.vm.box = "bento/centos-7.6"
       node.vm.hostname = vm_name
       node.vm.network "private_network", ip: vm_ip
       # config.vm.synced_folder "../data", "/vagrant_data"
@@ -43,7 +43,7 @@ Vagrant.configure("2") do |config|
 
         sed -i '1d' /etc/hosts
 
-        if [ "#{name}-1" == "#{vm_name}" ];then wget https://bootstrap.pypa.io/get-pip.py -O -|python && pip install ansible==2.4.4;fi
+        if [ "#{name}-1" == "#{vm_name}" ];then wget https://bootstrap.pypa.io/get-pip.py -O -|python && pip install ansible;fi
 
         yum install -y java
       SHELL
